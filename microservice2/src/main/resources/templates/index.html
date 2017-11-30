@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All users</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<div th:if="${details != null}">
+    <h1>All users</h1>
+    <p th:text="${details.generated}"></p>
+
+    <th:block th:object="${details}">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>First name</th>
+                <th>Last name</th>
+            </tr>
+            <tr th:each="user : *{users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.lastName}"></td>
+            </tr>
+        </table>
+    </th:block>
+</div>
+
+<input type="button" value="Refresh Page" onClick="window.location.reload()"></input>
+
+</body>
+</html>
